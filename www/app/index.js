@@ -43,7 +43,8 @@ var app = {
   init: function () {
     bindEvents(this, {
       'document': {'deviceready': this.ready},
-      'form input': {'change': this.change}
+      'form input': {'change': this.change},
+      '.stick': {'click': this.light}
     });
 
     if(!IS_CORDOVA) {
@@ -59,14 +60,14 @@ var app = {
     // TODO
 
     // Grab preferences
-    if(IS_CORDOVA) {
-      this.store = plugins.appPreferences;
-      this.store.fetch(this.DATA_KEY).then(function (data) {
-        Object.assign(this.options, data || {});
-        // TODO: update settings UI
-        this.render();
-      }.bind(this));
-    }
+    // if(IS_CORDOVA) {
+    //   this.store = plugins.appPreferences;
+    //   this.store.fetch(this.DATA_KEY).then(function (data) {
+    //     Object.assign(this.options, data || {});
+    //     // TODO: update settings UI
+    //     this.render();
+    //   }.bind(this));
+    // }
 
     return this;
   },
@@ -74,9 +75,20 @@ var app = {
   change: function () {
     // TODO: check values and update options
 
-    if (IS_CORDOVA) {
-      this.store.store(noop, noop, this.DATA_KEY, this.options);
-    }//end if: options stored
+    // if (IS_CORDOVA) {
+    //   this.store.store(noop, noop, this.DATA_KEY, this.options);
+    // }//end if: options stored
+    return this;
+  },
+
+  light: function (e) {
+    this.options.debug && console.log('.light()');
+    var element = e.target.parentElement.children[0];
+    if('block' === element.style.display) {
+      element.style.display = 'none';
+    } else {
+      element.style.display = 'block';
+    }
     return this;
   },
 

@@ -57,7 +57,14 @@ footer a {
   display: block;
 }
 
-.mdl-layout__content { overflow: hidden; }
+.mdl-layout__content {
+  overflow: hidden;
+  background-color: black;
+}
+
+.mdl-layout__drawer-button {
+  color: white;
+}
 
 .center-center {
   position: absolute;
@@ -72,4 +79,115 @@ footer a {
 
   text-align: center;
   vertical-align: center;
+}
+
+
+.page-content {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+}
+
+.candle-stick {
+  align-self: center;
+}
+
+.stick {
+  background: white;
+  margin: 0px auto;
+  width: 30px;
+  height: 80px;
+  position: relative;
+}
+
+
+/* From: https://codepen.io/dazulu/pen/fGFyj */
+
+.candle {
+  display: none;
+  margin-bottom: 10px;
+  width: 30px;
+  height: 30px;
+  position:relative;
+  transform-origin:center bottom;
+  animation-name: flicker;
+  animation-duration:3ms;
+  animation-delay:200ms;
+  animation-timing-function: ease-in;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+.flame{
+  bottom:0;
+  position:absolute;
+  border-bottom-right-radius: 50%;
+  border-bottom-left-radius: 50%;
+  border-top-left-radius: 50%;
+  transform:rotate(-45deg) scale(1.5, 1.5);
+}
+
+.yellow{
+  left: 7px;
+  width: 15px;
+  height: 15px;
+  background:gold;
+  box-shadow: 0px 0px 4px 2px gold;
+}
+
+.orange{
+  left: 5px;
+  width: 20px;
+  height: 20px;
+  background:orange;
+  box-shadow: 0px 0px 3px 2px orange;
+}
+
+.red{
+  left: 2px;
+  width: 25px;
+  height: 25px;
+  background: OrangeRed;
+  box-shadow: 0px 0px 3px 2px OrangeRed;
+}
+
+.white{
+  left: 7px;
+  bottom: -2px;
+  width: 15px;
+  height: 15px;
+  background:white;
+  box-shadow: 0px 0px 4px 2px white;
+}
+
+.circle{
+  border-radius: 50%;
+  position:absolute;
+}
+
+.blue{
+  width: 5px;
+  height: 5px;
+  left: 12px;
+  bottom:-12px;
+  background: SlateBlue;
+  box-shadow: 0px 0px 7px 5px SlateBlue;
+}
+
+.black{
+  width: 20px;
+  height: 20px;
+  left: 5px;
+  bottom:-30px;
+  background: black;
+  box-shadow: 0px 0px 7px 5px black;
+}
+
+@keyframes flicker{
+  0%   {transform: rotate(-1deg);}
+  20%  {transform: rotate(1deg);}
+  40%  {transform: rotate(-1deg);}
+  60%  {transform: rotate(1deg) scaleY(1.04);}
+  80%  {transform: rotate(-2deg) scaleY(0.92);}
+  100% {transform: rotate(1deg);}
 }
